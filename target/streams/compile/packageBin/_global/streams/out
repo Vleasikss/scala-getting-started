@@ -1,0 +1,17 @@
+[0m[[0m[0mdebug[0m] [0m[0mPackaging D:\programming\study\scala\scala-get-started\target\scala-2.12\scala-get-started_2.12-0.1.0-SNAPSHOT.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	main[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\programming\study\scala\scala-get-started\target\scala-2.12\classes\main[0m
+[0m[[0m[0mdebug[0m] [0m[0m	main\scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\programming\study\scala\scala-get-started\target\scala-2.12\classes\main\scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	main\scala\org[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\programming\study\scala\scala-get-started\target\scala-2.12\classes\main\scala\org[0m
+[0m[[0m[0mdebug[0m] [0m[0m	main\scala\org\example[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\programming\study\scala\scala-get-started\target\scala-2.12\classes\main\scala\org\example[0m
+[0m[[0m[0mdebug[0m] [0m[0m	main\scala\org\example\Main$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\programming\study\scala\scala-get-started\target\scala-2.12\classes\main\scala\org\example\Main$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	main\scala\org\example\Main$delayedInit$body.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\programming\study\scala\scala-get-started\target\scala-2.12\classes\main\scala\org\example\Main$delayedInit$body.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	main\scala\org\example\Main.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  D:\programming\study\scala\scala-get-started\target\scala-2.12\classes\main\scala\org\example\Main.class[0m
+[0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m
