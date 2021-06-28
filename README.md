@@ -2,7 +2,6 @@
 
 - is a supertype of all the objects
 - contains equals, hashcode, toString methods
-- almost similiar to 'Object.class' in java
 
 ## AnyVal
 
