@@ -20,6 +20,12 @@ object Main {
     val query = "id=1"
     val url = getURL(endpoint, query)
     println(url)
+
+
+    val factorial3 = Factorial.get(3)
+    val factorial2 = Factorial.get(2)
+    assert(factorial2 == 2)
+    assert(factorial3 == 6)
   }
 
   /**
