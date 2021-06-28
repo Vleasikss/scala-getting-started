@@ -1,38 +1,104 @@
 package main.scala.org.example
 
-object Main extends App {
+object Main {
 
   /**
-   * The last command is a returned value
-   * [That's just like in Ruby language]
-   *
-   * @param input - number to square
+   * just psvm
+   * @param args arguments
    */
-  def getSquareString(input: Double): Double = {
-    val square = input * input
-    square
+  def main(args: Array[String]): Unit = {
+    val greeter = new Greeter("Hello", ", ")
+    greeter.greet("Oleg")
+
+    val point = Point(1, 2)
+    val point2 = Point(3, 4)
+    val samePoint = Point(1, 2)
+
+    assert(point == samePoint)
+
+
+    val idFactory = IdFactory.create()
+    println(idFactory.toString)
+
+    val greeterTrait: GreeterTrait = new DefaultGreeter
+    greeterTrait.greet("Hello")
   }
 
+}
+
+/**
+ * Default java classes
+ *
+ * @param prefix first arg of constructor
+ * @param suffix second arg of constructor
+ */
+class Greeter(prefix: String, suffix: String) {
+
   /**
-   * Default lambda expression
+   * Unit means that returned value is not necessary
+   * [Just like 'void' keyword in Java language]
    */
-  val addOne: Int => Int = (x: Int) => x + 1
+  def greet(name: String): Unit =
+    println(prefix + suffix + name)
+}
 
+/**
+ * case class (класс-образ)
+ *
+ *  - Immutable
+ *  - initializes by constructor
+ *  - initializes without keyword 'new'
+ *  - compares by values [point(1,2) == point(1,2) // true]
+ *
+ */
+case class Point(x: Int, y: Int)
+
+
+/**
+ * objects (синглтон-классы)
+ * Contains only 'static' methods
+ *
+ */
+object IdFactory {
+  private var counter = 0
+
+  def create(): Int = {
+    counter += 1
+    counter
+  }
+
+  override def toString: String = counter.toString
+}
+
+/**
+ * Traits (java-interfaces)
+ *
+ *
+ *
+ */
+trait GreeterTrait {
+  /**
+   * declares only behaviour of classes that will implement current trait
+   */
+  def greet(name: String): Unit
 
   /**
-   * Method that contains list of params
+   * default realization of trait method
    *
-   * @param x          first arg of first params list
-   * @param y          second arg of first params list
-   * @param multiplier first arg of second params list
    */
-  def addThenMultiply(x: Int, y: Int)(multiplier: Int): Int = (x + y) * multiplier
+  def greet(number: Int): Unit = {
+    println(s"Hello ${number}")
+  }
+}
 
+/**
+ * Realization of GreeterTrait methods
+ */
+class DefaultGreeter extends GreeterTrait {
 
-  val square = getSquareString(12)
-  assert(square == 144.0)
+  override def greet(name: String): Unit = {
+    println(s"Hello ${name}")
+  }
 
-  val i: Int = addOne(10)
-  assert(i == 11)
-
+  override def greet(number: Int): Unit = super.greet(number)
 }
