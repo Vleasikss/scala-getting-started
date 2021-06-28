@@ -22,6 +22,9 @@ object Main {
     println(url)
   }
 
+  /**
+   * (_ * 2) = (salary => salary * 2)
+   */
   def getNewSalaries(salaries: Seq[Double]): Seq[Double] = {
     salaries.map(_ * 2)
   }
