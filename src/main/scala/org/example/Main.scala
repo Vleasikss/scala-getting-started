@@ -1,38 +1,62 @@
 package main.scala.org.example
 
-object Main extends App {
+object Main {
+
+  def main(args: Array[String]): Unit = {
+
+    val point1 = new Point(_x = 20)
+    println(point1)
+
+
+    // using setters
+    point1.y = 10
+    point1.x = 20
+
+    //using setter
+    println(point1.x)
+    println(point1.y)
+
+  }
+}
+
+/**
+ * Default constructor
+ */
+class Point(private var _x: Int = 0, private var _y: Int = 0) {
+
+  private val bound = 100
 
   /**
-   * The last command is a returned value
-   * [That's just like in Ruby language]
+   * getter
    *
-   * @param input - number to square
+   * @return x value
    */
-  def getSquareString(input: Double): Double = {
-    val square = input * input
-    square
+  def x: Int = _x
+
+  def x_=(newValue: Int): Unit = {
+    if (newValue < bound) _x = newValue else printWarning()
+
   }
 
   /**
-   * Default lambda expression
+   * y getter
+   *
+   * @return y valye
    */
-  val addOne: Int => Int = (x: Int) => x + 1
+  def y: Int = _y
 
 
   /**
-   * Method that contains list of params
+   * y setter
    *
-   * @param x          first arg of first params list
-   * @param y          second arg of first params list
-   * @param multiplier first arg of second params list
+   * @param newValue new value to set
    */
-  def addThenMultiply(x: Int, y: Int)(multiplier: Int): Int = (x + y) * multiplier
+  def y_=(newValue: Int): Unit = {
+    if (newValue < bound) _y = newValue else printWarning()
+  }
 
+  private def printWarning(): Unit = println("Out of bound")
 
-  val square = getSquareString(12)
-  assert(square == 144.0)
-
-  val i: Int = addOne(10)
-  assert(i == 11)
-
+  override def toString: String =
+    s"($x, $y)"
 }
