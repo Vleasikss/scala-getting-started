@@ -1,5 +1,17 @@
 package main.scala.org.example
 
+/**
+ * In Java:
+ *
+ * Invariance
+ * -> ArrayList<Cat> -> cat apply only cat classes
+ * Covariance
+ * -> ArrayList<? extends Cat> -> can apply cat classes and its subclasses
+ *      - can't add elements, cause we don't know exact type
+ * Contravariance
+ * -> ArrayList<? super Cat> -> can apply cat classes and its superclasses
+ *      - can't read elements ( return object.class )
+ */
 object Main {
 
   val myCat: Cat = Cat("Boots")
