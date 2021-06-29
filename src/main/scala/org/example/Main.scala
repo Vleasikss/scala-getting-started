@@ -7,10 +7,10 @@ object Main {
     val message1 = Message("jorge@catalonia.es", "guillaume@quebec.ca", "Com va?")
     val message2 = Message("jorge@catalonia.es", "guillaume@quebec.ca", "Com va?")
 
-    //equality
+    // equality
     assert(message1 == message2)
 
-    //copying
+    // copying except recipient
     val message5 = message2.copy(recipient = "claire@bourgogne.fr")
     println(message5)
   }
