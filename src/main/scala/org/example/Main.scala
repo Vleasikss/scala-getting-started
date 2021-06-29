@@ -1,52 +1,31 @@
 package main.scala.org.example
 
+import java.sql.{Connection, DriverManager}
+
 
 object Main {
 
-  //  def newIntSeqBuffer(elem1: Int, elem2: Int): IntSeqBuffer =
-  //    new IntSeqBuffer {
-  //      override type T = List[U]
-  //      override val element = List(elem1, elem2)
-  //    }
-  def newIntSeqBuffer(elem1: Int, elem2: Int): SeqBuffer[Int, Seq[Int]] =
-    new SeqBuffer[Int, List[Int]] {
-      override val element: List[Int] = List(elem1, elem2)
-    }
-
-  def listOfDuplicates[A](x: A, length: Int): List[A] = {
-    if (length < 1)
-      Nil
-    else {
-      // :: - add element
-      x :: listOfDuplicates(x, length - 1)
-    }
-  }
-
-
   def main(args: Array[String]): Unit = {
-    println(listOfDuplicates[Int](3, 4))
+    val driver = "com.mysql.jdbc.Driver"
+    val url = "jdbc:mysql://localhost:3306/example_db"
+    val username = "root"
+    val password = "root"
+    try {
+      Class.forName(driver)
+      val connection:Connection = DriverManager.getConnection(url, username, password)
+      val statement = connection.createStatement
+      //language=SQL
+      val rs = statement.executeQuery("SELECT id, name FROM user")
+      while (rs.next()) {
+        val name = rs.getString("name")
+        val id = rs.getString("id")
+        println(s"name = $name, id=$id")
 
-    val buf = newIntSeqBuffer(7, 8)
-    println(s"length = ${buf.length}")
-    println(s"content = ${buf.element}")
+      }
+      connection.close()
+    } catch {
+      case e: Exception => e.printStackTrace()
+    }
+
   }
-}
-
-trait Buffer[+T] {
-  //  type T
-  val element: T
-}
-
-//abstract class SeqBuffer extends Buffer {
-//  type U
-//  override type T <: List[U]
-//
-//  def length: Int = element.length
-//}
-//abstract class IntSeqBuffer extends SeqBuffer {
-//  override type U = Int
-//}
-abstract class SeqBuffer[U, +T <: Seq[U]] extends Buffer[T] {
-  def length: Int = element.length
-
 }
