@@ -3,10 +3,13 @@ package main.scala.org.example
 import java.sql.{Connection, DriverManager}
 
 
+/**
+ * SBT - scala build tool
+ */
 object Main {
 
   def main(args: Array[String]): Unit = {
-    val driver = "com.mysql.jdbc.Driver"
+    val driver = "com.mys.jdbc.Driver"
     val url = "jdbc:mysql://localhost:3306/example_db"
     val username = "root"
     val password = "root"
