@@ -1,6 +1,7 @@
 package org.example
 
 
+
 object Main {
 
   def main(args: Array[String]): Unit = {
@@ -49,6 +50,8 @@ private object CollectionUtils {
   /**
    * Do some lambda-action with <span style="color: purple">beginValue</span>, starts from beginning of collection
    *
+   * Uses idea of monoid-pattern
+   *
    * @param collection collection to fold
    * @return sum of all the values in collection with startedValue: <span style="color: purple">beginValue</span>
    */
@@ -59,6 +62,8 @@ private object CollectionUtils {
 
   /**
    * Do some lambda-action with <span style="color: purple">beginValue</span>, starts from end of collection
+   *
+   * Uses idea of monoid-pattern
    *
    * @param collection collection to fold
    * @return sum of all the values in collection with startedValue: <span style="color: purple">beginValue</span>
