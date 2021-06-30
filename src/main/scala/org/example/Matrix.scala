@@ -1,4 +1,4 @@
-package main.scala.org.example
+package org.example
 
 
 case class Matrix(from: Int, to: Int) {
