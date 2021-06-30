@@ -1,7 +1,8 @@
-package main.scala.org.example
+package org.example
 
 object Main {
 
+  /** Example of using mixins **/
   class RichIteratorImpl extends StringIterator("Oleg") with RichIterator
 
   def main(args: Array[String]): Unit = {
