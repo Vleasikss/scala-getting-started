@@ -1,52 +1,81 @@
-package main.scala.org.example
+package org.example
 
 
 object Main {
 
-  //  def newIntSeqBuffer(elem1: Int, elem2: Int): IntSeqBuffer =
-  //    new IntSeqBuffer {
-  //      override type T = List[U]
-  //      override val element = List(elem1, elem2)
-  //    }
-  def newIntSeqBuffer(elem1: Int, elem2: Int): SeqBuffer[Int, Seq[Int]] =
-    new SeqBuffer[Int, List[Int]] {
-      override val element: List[Int] = List(elem1, elem2)
-    }
-
-  def listOfDuplicates[A](x: A, length: Int): List[A] = {
-    if (length < 1)
-      Nil
-    else {
-      // :: - add element
-      x :: listOfDuplicates(x, length - 1)
-    }
-  }
-
-
   def main(args: Array[String]): Unit = {
-    println(listOfDuplicates[Int](3, 4))
+    val utils = CollectionUtils
 
-    val buf = newIntSeqBuffer(7, 8)
-    println(s"length = ${buf.length}")
-    println(s"content = ${buf.element}")
+    val zippedCollection = utils.doZip(List(1, 2, 3, 4, 5), List("one", "two", "three", "four"))
+    println(zippedCollection) // List((1,one), (2,two), (3,three), (4,four))
+
+    val partitionedCollection = utils.doPartition(List(1, 2, 3, 4, 5, 6))
+    println(partitionedCollection) // ( List(2, 4, 6), List(1, 3, 5) )
+
+    val foldedLeftCollection = utils.doFoldLeft(List(1, 2, 3, 4, 5, 6))
+    println(foldedLeftCollection) // 21
+
+    val foldedRightCollection = utils.doFoldRight(List(1, 2, 3, 4, 5, 6))
+    println(foldedRightCollection) // 21
+
+    val flattenCollection = utils.doFlatten(List(1, 2, 3, 4, 5, 6), List(1, 2, 3, 4))
+    print(flattenCollection) // List(1, 2, 3, 4, 5, 6, 1, 2, 3, 4)
+
   }
+
 }
 
-trait Buffer[+T] {
-  //  type T
-  val element: T
-}
+private object CollectionUtils {
 
-//abstract class SeqBuffer extends Buffer {
-//  type U
-//  override type T <: List[U]
-//
-//  def length: Int = element.length
-//}
-//abstract class IntSeqBuffer extends SeqBuffer {
-//  override type U = Int
-//}
-abstract class SeqBuffer[U, +T <: Seq[U]] extends Buffer[T] {
-  def length: Int = element.length
+  /**
+   *
+   * @param collection      - first Int element of Tuple in sequence
+   * @param collectionToZip - second String element of Tuple in sequence
+   * @return Joined collections into Sequence of Tuples[Int, String]
+   */
+  def doZip(collection: List[Int], collectionToZip: List[String]): Seq[(Int, String)] =
+    collection.zip(collectionToZip)
 
+
+  /**
+   *
+   * @param collection - collection to predicate
+   * @return Tuple that will contain two collections: predicted && unpredicted
+   */
+  def doPartition(collection: List[Int]): (List[Int], List[Int]) =
+    collection.partition(value => value % 2 == 0)
+
+
+  /**
+   * Do some lambda-action with <span style="color: purple">beginValue</span>, starts from beginning of collection
+   *
+   * @param collection collection to fold
+   * @return sum of all the values in collection with startedValue: <span style="color: purple">beginValue</span>
+   */
+  def doFoldLeft(collection: List[Int]): Int = {
+    val beginValue = 0
+    collection.foldLeft(beginValue)((value, newValue) => value + newValue)
+  }
+
+  /**
+   * Do some lambda-action with <span style="color: purple">beginValue</span>, starts from end of collection
+   *
+   * @param collection collection to fold
+   * @return sum of all the values in collection with startedValue: <span style="color: purple">beginValue</span>
+   */
+  def doFoldRight(collection: List[Int]): Int = {
+    val beginValue = 0
+    collection.foldRight(beginValue)((value, newValue) => value + newValue)
+  }
+
+  /**
+   * Collects the collections into one
+   *
+   * @param collection       first collection
+   * @param collectionToFlat second collection
+   * @return joined first collection && second collection
+   */
+  def doFlatten(collection: List[Int], collectionToFlat: List[Int]): List[Int] = {
+    List(collection, collectionToFlat).flatten
+  }
 }
