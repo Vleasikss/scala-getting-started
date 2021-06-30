@@ -2,11 +2,13 @@ package org.example
 
 import org.scalatest.BeforeAndAfter
 import org.scalatest.funsuite.AnyFunSuite
+
 /**
  *
  * BeforeAndAfter is a trait, that allows to use 'before' method <br/>
  * (To use something just like annotation <span style="color:yellow">@BeforeEach</span> in Java)
  */
+@deprecated("looks too ugly")
 class CubeCalculatorFunSuiteTest extends AnyFunSuite with BeforeAndAfter {
 
   var list: List[Int] = _

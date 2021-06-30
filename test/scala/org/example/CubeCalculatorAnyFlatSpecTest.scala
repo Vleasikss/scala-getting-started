@@ -16,7 +16,7 @@ class CubeCalculatorAnyFlatSpecTest extends AnyFlatSpec with BeforeAndAfter {
   }
 
   def withFile(testCode: (File, FileWriter, FileReader) => Any): Unit = {
-    val file = File.createTempFile("hello", "txt") // create the fixture
+    val file = File.createTempFile("hello", "world") // create the fixture
     val writer = new FileWriter(file)
     val reader = new FileReader(file)
     try {
@@ -28,7 +28,7 @@ class CubeCalculatorAnyFlatSpecTest extends AnyFlatSpec with BeforeAndAfter {
     } // clean up the fixture
   }
 
-  "Cube calculator " should "cube 3 should return 27" in {
+  "Cube calculator " should "cube 3 and return 27" in {
     val cube = Calculator.cube(3)
     val expectedValue = 27
     assert(cube === expectedValue)
