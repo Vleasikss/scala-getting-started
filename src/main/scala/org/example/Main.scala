@@ -1,4 +1,4 @@
-package main.scala.org.example
+package org.example
 
 import scala.util.Random
 
