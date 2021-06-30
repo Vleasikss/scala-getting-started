@@ -1,4 +1,4 @@
-package main.scala.org.example
+package org.example
 
 import main.scala.org.example.iterator.IntIterator
 import main.scala.org.example.pet.{Cat, Dog, Pet}
