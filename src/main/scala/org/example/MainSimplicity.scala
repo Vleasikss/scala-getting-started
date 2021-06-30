@@ -17,8 +17,8 @@ package main.scala.org.example
  */
 object MainSimplicity {
 
-  val CTX_STRING_VALUE: String = "String"
-  val CTX_INT_VALUE: Int = 1
+  val CTX_STRING:(String, String) = ("This is string", "String")
+  val CTX_INT:(String, Int) = ("This is integer", 1)
 
   def printContext(implicit ctx: Context): Unit = println(ctx.name)
 
@@ -32,19 +32,19 @@ object MainSimplicity {
     implicit val ctx: Context = Context("Hello world")
     printContext
 
-    implicit val ctxInt: ContextGenerics[Int] = ContextGenerics[Int]("This is integer")
-    implicit val ctxStr: ContextGenerics[String] = ContextGenerics[String]("This is string")
+    implicit val ctxInt: ContextGenerics[Int] = ContextGenerics[Int](CTX_INT._1)
+    implicit val ctxStr: ContextGenerics[String] = ContextGenerics[String](CTX_STRING._1)
 
-    val resultCtxInt: String = printContextGenerics(CTX_INT_VALUE)
-    val resultCtxString: String = printContextGenerics(CTX_STRING_VALUE)
+    val resultCtxInt: String = printContextGenerics(CTX_STRING._2)
+    val resultCtxString: String = printContextGenerics(CTX_STRING._2)
 
     println(resultCtxInt)
     println(resultCtxString)
 
 
     // EXPLANATION
-    assert(resultCtxInt == printContextGenerics(CTX_INT_VALUE)(ctxInt))
-    assert(resultCtxString == printContextGenerics(CTX_STRING_VALUE)(ctxStr))
+    assert(resultCtxInt == printContextGenerics(CTX_INT._2)(ctxInt))
+    assert(resultCtxString == printContextGenerics(CTX_STRING._2)(ctxStr))
 
   }
 }
