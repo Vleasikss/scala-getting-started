@@ -40,7 +40,7 @@ trait RichIterator extends AbsIterator {
   /**
    * Calls a function while the iterator contains the elements
    *
-   * - Gives into a function f next element param
+   *  - Gives into a function f next element param
    *
    * @param f function
    */
